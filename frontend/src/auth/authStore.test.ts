@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { useAuthStore, decodeRole } from './authStore'
+import { useAuthStore, decodeRole, decodeEmployeeId } from './authStore'
 
 function fakeJwt(payload: object): string {
   const header = btoa(JSON.stringify({ alg: 'none' }))
@@ -31,5 +31,10 @@ describe('authStore', () => {
 
   it('returns null for a malformed token instead of throwing', () => {
     expect(decodeRole('not-a-jwt')).toBeNull()
+  })
+
+  it('decodes the employeeId claim out of a JWT payload', () => {
+    const token = fakeJwt({ employeeId: 'e1234' })
+    expect(decodeEmployeeId(token)).toBe('e1234')
   })
 })

@@ -5,6 +5,7 @@ const navItems = [
   { to: '/', label: 'Dashboard' },
   { to: '/employees', label: 'Employees' },
   { to: '/leave-requests', label: 'Leave Requests' },
+  { to: '/attendance', label: 'Attendance' },
 ]
 
 export function AppLayout() {
