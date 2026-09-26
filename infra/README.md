@@ -36,6 +36,17 @@ have permissions for ECR push, ECS service update, S3 sync, and CloudFront
 invalidation - not included here since it depends on your account's existing
 IAM setup.
 
+The workflow also reads these repo variables (Settings > Secrets and
+variables > Actions > Variables), sourced from `terraform output` after
+`apply`:
+
+| Variable | From |
+|---|---|
+| `AWS_REGION` | `var.region` (`us-east-1` by default) |
+| `ENVIRONMENT` | `var.environment` (`dev` by default) |
+| `FRONTEND_BUCKET_NAME` | `terraform output frontend_bucket_name` |
+| `CLOUDFRONT_DISTRIBUTION_ID` | `terraform output frontend_distribution_id` |
+
 ## Environments
 
 Only `dev` exists today. A `staging`/`prod` environment is a new directory
