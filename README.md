@@ -28,6 +28,7 @@ and the [ADRs](docs/adr/) for the reasoning behind the bigger decisions.
 - Multi-tenant organizations with role-based access (Admin / HR Manager / Manager / Employee)
 - Employee directory: create, update, offboard
 - Leave requests with an approval workflow
+- Attendance: clock in/out, with manager/HR approval of timesheet entries
 - JWT auth with BCrypt-hashed passwords
 - RFC 7807 problem-detail error responses
 

@@ -45,3 +45,15 @@ export interface LeaveRequestInput {
   endDate: string
   reason?: string
 }
+
+export type AttendanceStatus = 'PENDING' | 'APPROVED'
+
+export interface AttendanceEntry {
+  id: string
+  employeeId: string
+  workDate: string
+  clockIn: string
+  clockOut: string | null
+  minutesWorked: number | null
+  status: AttendanceStatus
+}

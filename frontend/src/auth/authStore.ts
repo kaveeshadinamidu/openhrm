@@ -26,12 +26,19 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 }))
 
-export function decodeRole(token: string | null): string | null {
+function decodeClaims(token: string | null): Record<string, unknown> | null {
   if (!token) return null
   try {
-    const payload = JSON.parse(atob(token.split('.')[1]))
-    return payload.role ?? null
+    return JSON.parse(atob(token.split('.')[1]))
   } catch {
     return null
   }
+}
+
+export function decodeRole(token: string | null): string | null {
+  return (decodeClaims(token)?.role as string) ?? null
+}
+
+export function decodeEmployeeId(token: string | null): string | null {
+  return (decodeClaims(token)?.employeeId as string) ?? null
 }
